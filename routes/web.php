@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\emailVerified;
+use App\Http\Middleware\notAdmin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/route-1', function () {
+    //
+})->middleware(emailVerified::class);
+
+Route::get('/route-2', function () {
+    //
+})->middleware(notAdmin::class);
