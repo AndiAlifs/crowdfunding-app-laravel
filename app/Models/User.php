@@ -13,8 +13,8 @@ class User extends Authenticatable
 
     protected static function boot() {
         static::creating(function ($model) {
-            if ( ! $model->getKey()) {
-                $model->{$model->getKeyName()} = (string) Str::uuid();
+            if (!$model->getKey()) {
+                $model->{$model->getKeyName()} = (string)Str::uuid();
             }
         });
     }
