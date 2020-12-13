@@ -14,7 +14,8 @@ class CreateOtpsTable extends Migration
     public function up()
     {
         Schema::create('otps', function (Blueprint $table) {
-            $table->string('otp_code')->primary;
+            $table->string('otp_code');
+            $table->primary('otp_code');
             $table->timestamps();
             $table->time('time_expired');
         });
