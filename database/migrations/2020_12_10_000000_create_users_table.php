@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->unsignedBigInteger('role_idrole')->nullable();
-            $table->string('otp_codes')->nullable();
-            $table->foreign('role_idrole')->references('id')->on('roles');
-            $table->foreign('otp_codes')->references('otp_code')->on('otps');
+            $table->uuid('role_id')->nullable();
+            $table->uuid('otp_id')->nullable();
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('otp_id')->references('id')->on('otps')->onDelete('cascade');
         });
     }
 
