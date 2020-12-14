@@ -6,18 +6,20 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected static function boot() {
-        static::creating(function ($model) {
-            if (!$model->getKey()) {
-                $model->{$model->getKeyName()} = (string)Str::uuid();
-            }
-        });
-    }
+    // protected static function boot() {
+    //     static::creating(function ($model) {
+    //         if (!$model->getKey()) {
+    //             dd((string)Str::uuid());
+    //             $model->{$model->getKeyName()} =(string)Str::uuid();
+    //         };
+    //     });
+    // }
 
      /**
      * Get the value indicating whether the IDs are incrementing.
@@ -45,9 +47,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name',
+        'id',
+        'username',
         'email',
-        'password',
+        'name',
     ];
 
     

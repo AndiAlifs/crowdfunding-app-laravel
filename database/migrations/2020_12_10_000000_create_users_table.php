@@ -19,10 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('username',25)->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->unsignedBigInteger('role_idrole');
+            $table->unsignedBigInteger('role_idrole')->nullable();
             $table->string('otp_codes')->nullable();
             $table->foreign('role_idrole')->references('id')->on('roles');
             $table->foreign('otp_codes')->references('otp_code')->on('otps');
