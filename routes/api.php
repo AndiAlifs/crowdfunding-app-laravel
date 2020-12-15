@@ -18,5 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', 'App\Http\Controllers\Auth\RegisterController');
-Route::get('get_otp', 'App\Http\Controllers\Auth\OTPController');
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'auth',
+    'namespace' => 'App\Http\Controllers\Auth'
+], function(){
+    Route::post('register', 'RegisterController');
+    Route::get('get_otp', 'OTPController');
+});
