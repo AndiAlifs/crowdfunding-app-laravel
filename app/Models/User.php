@@ -22,6 +22,17 @@ class User extends Authenticatable
      * @return bool
      */
     
+    public function get_user_role_id(){
+        $role = Role::where('name','user')->first();
+        return $role->id;
+    }
+
+    public static function boot() {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->role_id = $model->get_user_role_id();
+        });
+    }
 
     /**
      * Get the auto-incrementing key type.
@@ -68,11 +79,11 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsTo('App\Role');
+        return $this->belongsTo('App\Models\Role');
     }
 
     public function otp()
     {
-        return $this->hasOne('App\Otp');
+        return $this->hasOne('App\Models\Otp');
     }
 }
