@@ -24,13 +24,17 @@ class RegisterController extends Controller
             'name' => ['required']
         ]);
 
-        User::create([
+        $data = User::create([
             'id' => (string)Str::uuid(),
             'username' => $request['username'],
             'email' => $request['email'],
             'name' => $request['name']
         ]);
 
-        return response("telah teregister");
+        return response()->json([
+            'response_code' => '00',
+            'response_message' => 'user baru telah didaftarkan, silahkan cek email untuk melihat kode OTP',
+            'data' => $data
+        ]);
     }
 }
