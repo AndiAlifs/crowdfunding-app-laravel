@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('register', 'App\Http\Controllers\Auth\RegisterController');
+Route::get('get_otp', 'App\Http\Controllers\Auth\OTPController');

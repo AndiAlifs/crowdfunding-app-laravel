@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\emailVerified;
-use App\Http\Middleware\notAdmin;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/route-1', function () {
-    //
-})->middleware(emailVerified::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/route-2', function () {
-    //
-})->middleware(notAdmin::class);
+require __DIR__.'/auth.php';
+
+Route::get('/route-1', function(){
+    return 'masuk';
+})->middleware(['auth','emailVerified']);
+
+Route::get('/route-2', function(){
+    return 'masuk';
+})->middleware(['auth','emailVerified', 'notAdmin']);

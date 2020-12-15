@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class notAdmin
 {
@@ -16,9 +17,11 @@ class notAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = \App\User::where('email', $request->email)->first();
+        $user = \App\Models\User::where('id',Auth::id())->first();
         if ($user->role->role_name != 'admin'){
-            return redirect("/");
+            return response()->json([
+                'message' => 'anda bukan admin'
+            ]);
         } else {
             return redirect("/admin");
         }
