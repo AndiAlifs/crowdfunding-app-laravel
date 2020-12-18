@@ -32,6 +32,11 @@ class User extends Authenticatable
         static::creating(function ($model) {
             $model->role_id = $model->get_user_role_id();
         });
+        static::created(function ($model){
+            $new_otp = Otp::create(['user_id' => $model->id]);
+            $model->otp_id = $new_otp->id;
+            $model->save();
+        });
     }
 
     /**

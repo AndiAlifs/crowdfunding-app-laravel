@@ -15,7 +15,6 @@ class OTPController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $randomNumber = rand(10000,99999);
-        return response($randomNumber);
+        //
     }
 }
