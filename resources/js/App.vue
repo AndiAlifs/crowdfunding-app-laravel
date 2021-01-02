@@ -36,7 +36,7 @@
                         <v-icon left>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
 
-                    <v-list-item-content>
+                    <v-list-item-content>             
                         <v-list-item-title>{{ item.title }}</v-list-item-title>
                     </v-list-item-content>
 
@@ -56,7 +56,28 @@
 
     <!-- header -->
     <v-app-bar app color="success" dark>
-      Header
+        <v-app-bar-nav-icon@click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-toolbar-title>SanberCode App</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn-icon>
+            <v-badge color="orange" overlap>
+                <template v-slot:badge>
+                    <span>3</span>
+                </template>
+                <v-icon>mdi-cash-multiple</v-icon>
+            </v-badge>
+        </v-btn-icon>
+
+        <v-text-field 
+            slot="extension"
+            hide-details
+            append-icon="mdi-microphone"
+            flat
+            label="search"
+            prepend-inner-icon="mdi-magnify"
+            solo-inverted
+        ></v-text-field>
+
     </v-app-bar>
 
     <!-- Content -->
@@ -64,14 +85,20 @@
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
-        <router-view></router-view>
+        <v-slide-y-transition>
+            <router-view></router-view>
+        </v-slide-y-transition>
       </v-container>
     </v-main>
 
     <!-- footer -->
-    <v-footer app>
-      SongGi-tech Studio 2020
-    </v-footer>
+    <v-card>
+        <v-footer app>
+            <v-card-text absolute class="text-center">
+                &copy; {{ new Date().getFullYear() }} - <strong>SongGi Tech Studio</strong>
+            </v-card-text>
+        </v-footer>
+    </v-card>
   </v-app>
 </template>
 
@@ -82,6 +109,7 @@
             drawer: false,
             menus: [
                 {title: 'Home', icon:'mdi-home', route: '/'},
+                {title: 'Donations', icon:'mdi-cash-usd-outline', route: '/donations'},
                 {title: 'Campaigns', icon:'mdi-hand-heart', route: '/campaigns'}
             ],
             guest: false,

@@ -287,6 +287,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
   data: function data() {
@@ -296,6 +323,10 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Home',
         icon: 'mdi-home',
         route: '/'
+      }, {
+        title: 'Donations',
+        icon: 'mdi-cash-usd-outline',
+        route: '/donations'
       }, {
         title: 'Campaigns',
         icon: 'mdi-hand-heart',
@@ -1561,19 +1592,101 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("v-app-bar", { attrs: { app: "", color: "success", dark: "" } }, [
-        _vm._v("\n    Header\n  ")
-      ]),
-      _vm._v(" "),
       _c(
-        "v-main",
-        [_c("v-container", { attrs: { fluid: "" } }, [_c("router-view")], 1)],
+        "v-app-bar",
+        { attrs: { app: "", color: "success", dark: "" } },
+        [
+          _c("v-app-bar-nav-icon", {
+            on: {
+              click: function($event) {
+                $event.stopPropagation()
+                _vm.drawer = !_vm.drawer
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("v-toolbar-title", [_vm._v("SanberCode App")]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-btn-icon",
+            [
+              _c(
+                "v-badge",
+                {
+                  attrs: { color: "orange", overlap: "" },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "badge",
+                      fn: function() {
+                        return [_c("span", [_vm._v("3")])]
+                      },
+                      proxy: true
+                    }
+                  ])
+                },
+                [_vm._v(" "), _c("v-icon", [_vm._v("mdi-cash-multiple")])],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("v-text-field", {
+            attrs: {
+              slot: "extension",
+              "hide-details": "",
+              "append-icon": "mdi-microphone",
+              flat: "",
+              label: "search",
+              "prepend-inner-icon": "mdi-magnify",
+              "solo-inverted": ""
+            },
+            slot: "extension"
+          })
+        ],
         1
       ),
       _vm._v(" "),
-      _c("v-footer", { attrs: { app: "" } }, [
-        _vm._v("\n    SongGi-tech Studio 2020\n  ")
-      ])
+      _c(
+        "v-main",
+        [
+          _c(
+            "v-container",
+            { attrs: { fluid: "" } },
+            [_c("v-slide-y-transition", [_c("router-view")], 1)],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-footer",
+            { attrs: { app: "" } },
+            [
+              _c(
+                "v-card-text",
+                { staticClass: "text-center", attrs: { absolute: "" } },
+                [
+                  _vm._v(
+                    "\n              © " +
+                      _vm._s(new Date().getFullYear()) +
+                      " - "
+                  ),
+                  _c("strong", [_vm._v("SongGi Tech Studio")])
+                ]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
