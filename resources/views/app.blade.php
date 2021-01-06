@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> SanberCode </h1>
     <div id="app">
         <app></app>
     </div>
