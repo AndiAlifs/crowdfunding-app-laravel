@@ -38,10 +38,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      campaigns: []
+      campaigns: [],
+      blogs: []
     };
   },
   created: function created() {
@@ -51,6 +77,13 @@ __webpack_require__.r(__webpack_exports__);
       var data = response.data.data;
       console.log(data);
       _this.campaigns = data.campaigns;
+    })["catch"](function (error) {
+      var response = error.response;
+      console.log(response);
+    }), axios.get('api/blog/random/2').then(function (response) {
+      var data = response.data.data;
+      console.log(data);
+      _this.blogs = data.blogs;
     })["catch"](function (error) {
       var response = error.response;
       console.log(response);
@@ -138,6 +171,104 @@ var render = function() {
                 1
               )
             }),
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-container",
+        { staticClass: "ma-0 pa-0", attrs: { "grid-list-m": "" } },
+        [
+          _c(
+            "div",
+            { staticClass: "text-right" },
+            [
+              _c(
+                "v-btn",
+                {
+                  staticClass: "blue--text",
+                  attrs: { small: "", text: "", to: "/blogs" }
+                },
+                [
+                  _vm._v("\n                All blog "),
+                  _c("v-icon", [_vm._v("mdi-chevron-right")])
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { wrap: "" } },
+            [
+              _c(
+                "v-carousel",
+                { attrs: { "hide-delimiters": "", height: "250" } },
+                _vm._l(_vm.blogs, function(blog, i) {
+                  return _c(
+                    "v-carousel-item",
+                    {
+                      key: "blog-" + i,
+                      staticClass: "mx-2",
+                      attrs: { xs6: "" }
+                    },
+                    [
+                      _c(
+                        "v-img",
+                        {
+                          staticClass: "fill-height",
+                          attrs: { src: blog.image }
+                        },
+                        [
+                          _c(
+                            "v-container",
+                            {
+                              attrs: {
+                                "fill-height": "",
+                                fluid: "",
+                                "pa-0": "",
+                                "ma-0": ""
+                              }
+                            },
+                            [
+                              _c(
+                                "v-layout",
+                                {
+                                  attrs: { "fill-height": "", "align-end": "" }
+                                },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs12: "", "m-2": "" } },
+                                    [
+                                      _c("span", {
+                                        staticClass: "headline black--text",
+                                        domProps: {
+                                          textContent: _vm._s(blog.title)
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                }),
+                1
+              )
+            ],
             1
           )
         ],

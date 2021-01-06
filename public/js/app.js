@@ -3465,7 +3465,6 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-main",
-        { staticClass: "pt-15" },
         [
           _c(
             "v-container",
@@ -63566,6 +63565,18 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'donations',
     component: function component() {
       return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./Donations.vue */ "./resources/js/Donations.vue"));
+    }
+  }, {
+    path: '/campaigns',
+    name: 'campaigns',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ./Campaigns.vue */ "./resources/js/Campaigns.vue"));
+    }
+  }, {
+    path: '/blogs',
+    name: 'blogs',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./Blogs.vue */ "./resources/js/Blogs.vue"));
     }
   }, {
     path: '*',
