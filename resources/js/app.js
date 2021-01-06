@@ -4,6 +4,8 @@ import App from './App.vue'
 import vuetify from './vuetify.js'
 import './bootstrap.js'
 
+Vue.component('campaign-item', require('./components/CampaignItem.vue').default);
+
 const app = new Vue({
     el: "app",
     router,
