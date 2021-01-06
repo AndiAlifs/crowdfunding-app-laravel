@@ -18,6 +18,13 @@
                     v-model="progress"
                     color="blue-grey"
                     height="7"
+                    v-if="progress < 100"
+                ></v-progress-linear>
+                <v-progress-linear
+                    v-model="progress"
+                    color="success"
+                    height="7"
+                    v-else
                 ></v-progress-linear>
             </v-card-actions>
 

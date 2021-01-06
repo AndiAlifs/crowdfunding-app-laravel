@@ -2214,6 +2214,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'campaign-item',
   props: ['campaign'],
@@ -3680,16 +3687,27 @@ var render = function() {
           _c(
             "v-card-actions",
             [
-              _c("v-progress-linear", {
-                attrs: { color: "blue-grey", height: "7" },
-                model: {
-                  value: _vm.progress,
-                  callback: function($$v) {
-                    _vm.progress = $$v
-                  },
-                  expression: "progress"
-                }
-              })
+              _vm.progress < 100
+                ? _c("v-progress-linear", {
+                    attrs: { color: "blue-grey", height: "7" },
+                    model: {
+                      value: _vm.progress,
+                      callback: function($$v) {
+                        _vm.progress = $$v
+                      },
+                      expression: "progress"
+                    }
+                  })
+                : _c("v-progress-linear", {
+                    attrs: { color: "success", height: "7" },
+                    model: {
+                      value: _vm.progress,
+                      callback: function($$v) {
+                        _vm.progress = $$v
+                      },
+                      expression: "progress"
+                    }
+                  })
             ],
             1
           ),
