@@ -207,7 +207,7 @@ var render = function() {
             [
               _c(
                 "v-carousel",
-                { attrs: { "hide-delimiters": "", height: "250" } },
+                { attrs: { "hide-delimiters": "", height: "250", "m-2": "" } },
                 _vm._l(_vm.blogs, function(blog, i) {
                   return _c(
                     "v-carousel-item",
@@ -243,10 +243,18 @@ var render = function() {
                                 [
                                   _c(
                                     "v-flex",
-                                    { attrs: { xs12: "", "m-2": "" } },
+                                    {
+                                      staticClass: "text-center",
+                                      staticStyle: {
+                                        "background-color":
+                                          "rgba(255, 255, 255, 0.5)"
+                                      },
+                                      attrs: { xs12: "", "p-2": "" }
+                                    },
                                     [
                                       _c("span", {
-                                        staticClass: "headline black--text",
+                                        staticClass:
+                                          "subtitle-1 black--text text-capitalize",
                                         domProps: {
                                           textContent: _vm._s(blog.title)
                                         }

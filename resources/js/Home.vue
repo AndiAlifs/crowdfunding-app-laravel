@@ -31,7 +31,7 @@
                 </v-btn>
             </div>
             <v-layout wrap>
-                <v-carousel hide-delimiters height="250">
+                <v-carousel hide-delimiters height="250" m-2>
                     <v-carousel-item v-for="(blog, i) in blogs"
                                 :key="'blog-'+i"
                                 xs6
@@ -39,8 +39,8 @@
                         <v-img :src="blog.image" class="fill-height">
                             <v-container fill-height fluid pa-0 ma-0>
                                 <v-layout fill-height align-end>
-                                    <v-flex xs12 m-2>
-                                        <span class="headline black--text" v-text="blog.title"> </span>
+                                    <v-flex xs12 p-2 class="text-center" style="background-color: rgba(255, 255, 255, 0.5)">
+                                        <span class="subtitle-1 black--text text-capitalize" v-text="blog.title"> </span>
                                     </v-flex>
                                 </v-layout>
                             </v-container>
