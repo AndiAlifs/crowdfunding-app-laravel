@@ -56,17 +56,17 @@
 
     <!-- header -->
     <v-app-bar app color="success" dark>
-        <v-app-bar-nav-icon@click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title>SanberCode App</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn-icon>
+        <v-btn icon>
             <v-badge color="orange" overlap>
                 <template v-slot:badge>
                     <span>3</span>
                 </template>
                 <v-icon>mdi-cash-multiple</v-icon>
             </v-badge>
-        </v-btn-icon>
+        </v-btn>
 
         <v-text-field 
             slot="extension"
@@ -81,7 +81,7 @@
     </v-app-bar>
 
     <!-- Content -->
-    <v-main>
+    <v-main class="pt-15">
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
