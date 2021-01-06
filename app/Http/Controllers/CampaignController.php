@@ -31,7 +31,10 @@ class CampaignController extends Controller
 
         $campaign = Campaign::create([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'address' => $request->address,
+            'collected' => $request->collected,
+            'required' => $request->required
         ]);
 
         if ($request->hasFile('image')){
