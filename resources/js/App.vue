@@ -81,7 +81,7 @@
     </v-app-bar>
 
     <!-- Content -->
-    <v-main class="pt-15">
+    <v-main>
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Campaign;
-use PhpParser\Node\Stmt\Catch_;
 
 class CampaignController extends Controller
 {
@@ -60,6 +59,18 @@ class CampaignController extends Controller
         return response()->json([
             'response_code' => '00',
             'response_message' => 'data campaign telah berhasil disimpan',
+            'data' => $data
+        ], 200);
+    }
+
+    public function index(){
+        $campaigns = Campaign::paginate(6);
+
+        $data['campaigns'] = $campaigns;
+
+        return response()->json([
+            'response_code' => '00',
+            'response_message' => 'data campaign telah berhasil didapat',
             'data' => $data
         ], 200);
     }
