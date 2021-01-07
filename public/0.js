@@ -78,7 +78,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     donate: function donate() {
-      alert('Donate');
+      this.$store.commit('insert');
     }
   }
 });
