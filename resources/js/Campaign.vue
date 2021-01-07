@@ -66,7 +66,7 @@ export default {
                 })
         },
         donate(){
-            alert('Donate')
+            this.$store.commit('insert')
         }
     }
 }
