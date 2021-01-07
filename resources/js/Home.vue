@@ -10,17 +10,6 @@
                 <v-flex v-for="(campaign, index) in campaigns"
                                 :key="'campaign-'+index"
                                 xs6>
-                    <!-- <v-card :to="'campaign/'+campaign.id"
-                        class="m-2"
-                        >
-                        <v-img :src="campaign.image"
-                                class="white--text"
-                                aspect-ratio="2.5">
-                            <v-card-title class="fill-height align-end"
-                                            v-text="campaign.title">
-                            </v-card-title>
-                        </v-img>
-                    </v-card> -->
                     <campaign-item v-bind:campaign="campaign" />
                 </v-flex>
             </v-layout>

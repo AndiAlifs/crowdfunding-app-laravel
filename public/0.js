@@ -75,7 +75,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var id = this.$route.params.id;
       var url = '/api/campaign/' + id;
-      console.log(url);
       axios.get(url).then(function (response) {
         var data = response.data.data;
         console.log(data);

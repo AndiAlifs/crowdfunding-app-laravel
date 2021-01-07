@@ -54,7 +54,6 @@ export default {
         go(){
             let { id } = this.$route.params
             let url = '/api/campaign/' + id
-            console.log(url)
             axios.get(url)
                 .then((response) => {
                     let { data } = response.data

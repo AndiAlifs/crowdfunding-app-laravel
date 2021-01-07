@@ -2,6 +2,15 @@
   <!-- App.vue -->
   <v-app>
     <alert/>
+
+    <v-dialog
+        v-model="dialog"
+        fullscreen
+        hide-overlay
+        transition="scale-transition"
+    >
+        <search @closed="closeDialog"/>
+    </v-dialog>
     <!-- sidebar -->
     <v-navigation-drawer app v-model="drawer">
         <v-list>
@@ -78,6 +87,7 @@
             label="search"
             prepend-inner-icon="mdi-magnify"
             solo-inverted
+            @click="dialog = true"
         ></v-text-field>
 
     </v-app-bar>
@@ -122,7 +132,9 @@
 
 <script>
     import { mapGetters } from "vuex";
+    import Search from './components/Search.vue';
     export default {
+    components: { Search },
         name: 'App',
         data: () => ({
             drawer: false,
@@ -132,6 +144,7 @@
                 {title: 'Campaigns', icon:'mdi-hand-heart', route: '/campaigns'}
             ],
             guest: false,
+            dialog: false,
         }),
         computed: {
             isHome() {
@@ -141,5 +154,10 @@
                 'transaction' : 'transaction/transaction'
             })
         },
+        methods: {
+            closeDialog(value) {
+                this.dialog = value
+            }
+        }
     };
 </script>

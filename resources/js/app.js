@@ -7,6 +7,7 @@ import './bootstrap.js'
 
 Vue.component('campaign-item', require('./components/CampaignItem.vue').default);
 Vue.component('alert', require('./components/Alert.vue').default);
+Vue.component('search', require('./components/Search.vue').default);
 
 const app = new Vue({
     el: "app",
