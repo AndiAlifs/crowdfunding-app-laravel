@@ -6,6 +6,7 @@ import store from './store.js'
 import './bootstrap.js'
 
 Vue.component('campaign-item', require('./components/CampaignItem.vue').default);
+Vue.component('alert', require('./components/Alert.vue').default);
 
 const app = new Vue({
     el: "app",

@@ -1,6 +1,7 @@
 <template>
   <!-- App.vue -->
   <v-app>
+    <alert/>
     <!-- sidebar -->
     <v-navigation-drawer app v-model="drawer">
         <v-list>
@@ -139,6 +140,6 @@
             ...mapGetters({
                 'transaction' : 'transaction/transaction'
             })
-        }
+        },
     };
 </script>
