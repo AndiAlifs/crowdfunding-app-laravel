@@ -120,6 +120,7 @@
 </template>
 
 <script>
+    import { mapGetters } from "vuex";
     export default {
         name: 'App',
         data: () => ({
@@ -135,9 +136,9 @@
             isHome() {
                 return (this.$route.path === '/' || this.$route.path === '/home' )
             },
-            transaction() {
-                return this.$store.getters.transaction
-            }
+            ...mapGetters({
+                'transaction' : 'transaction/transaction'
+            })
         }
     };
 </script>
