@@ -1,4 +1,5 @@
-<p align="center"><img src="/ssAplikasi.PNG" width=600></p>
+<p align="center"><img src="/public/ssAplikasi.PNG" width=600></p>
+<h3 align="center"><a href="https://drive.google.com/file/d/1XDolAW8MLyJsIY96WolwBLdU1rOsO-rF/view?usp=sharing">Demo Aplikasi</a></h3>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
