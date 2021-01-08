@@ -3,8 +3,7 @@
         <v-snackbar
             v-model="status"
             color="success"
-            buttom
-            timeout="4000"
+            timeout="2000"
             multi-line
             outlined
         >
@@ -19,7 +18,7 @@
                 >
                     Close
                 </v-btn>
-            </template>>
+            </template>
         </v-snackbar>
     </div> 
 </template>
