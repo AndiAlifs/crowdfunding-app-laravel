@@ -16,7 +16,7 @@ class Otp extends Model
         static::creating(function ($model){
             $model->otp = rand(10000,99999);
             $timeExpired = \Carbon\Carbon::now();
-            $timeExpired->minute += 2;
+            $timeExpired->minute += 10; 
             $model->time_expired = $timeExpired->toDateTimeString();
         });
     }

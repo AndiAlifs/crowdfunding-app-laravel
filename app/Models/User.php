@@ -39,6 +39,11 @@ class User extends Authenticatable
         });
     }
 
+    public function regenerate_otp_code() {        
+        $new_otp = Otp::create(['user_id' => $this->id]);
+        $this->otp_id = $new_otp->id;
+        $this->save();
+    }
     /**
      * Get the auto-incrementing key type.
      *
@@ -72,7 +77,21 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
 
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
     /**
      * The attributes that should be cast to native types.
      *
