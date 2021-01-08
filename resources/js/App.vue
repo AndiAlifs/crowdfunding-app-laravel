@@ -22,12 +22,12 @@
                         <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
                     </v-list-item-avatar>
                     <v-list-item-content>
-                        <v-list-item-title>Ahmad Basuki</v-list-item-title>
+                        <v-list-item-title>{{ user.name }}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
 
                 <div class="pa-2" v-if="guest">
-                    <v-btn block color="primary" class="mb-1">
+                    <v-btn block color="primary" class="mb-1" @click="setDialogComponent('login')">
                         <v-icon left>mdi-lock</v-icon>
                         Login
                     </v-btn>
@@ -58,7 +58,7 @@
 
         <template v-slot:append v-if="!guest">
             <div class="pa-2">
-                <v-btn block color="red" dark>
+                <v-btn block color="red" dark @click="logout">
                     <v-icon left>mdi-lock</v-icon>
                     Logout
                 </v-btn>
@@ -172,8 +172,20 @@
         methods: {
             ...mapActions({
                 setDialogStatus: 'dialog/setStatus',
-                setDialogComponent: 'dialog/setComponent'
-            })
-        }
+                setDialogComponent: 'dialog/setComponent',
+                setAuth: 'auth/set',
+                setAlert : 'alert/set',
+
+            }),
+            logout() {
+                this.setAuth({})
+                this.setAlert({
+                                status: true,
+                                color: 'success',
+                                text: 'logout success'
+                            })
+            }
+        },
+        
     };
 </script>
