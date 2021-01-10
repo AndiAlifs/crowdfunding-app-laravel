@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        TymonJWTAuthProvidersJWTAuthServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -226,8 +226,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'JWTAuth' => 'TymonJWTAuthFacadesJWTAuth',
-        'JWTFactory' => 'TymonJWTAuthFacadesJWTFactory'
+        'jwt' => 'Tymon\JWTAuth\Providers\JWT\Namshi',
+        'auth' => 'Tymon\JWTAuth\Providers\Auth\Illuminate',
+        'storage' => 'Tymon\JWTAuth\Providers\Storage\Illuminate'
     ],
 
 ];
