@@ -157,6 +157,7 @@
                 transaction : 'transaction/transaction',
                 guest: 'auth/guest',
                 user: 'auth/user',
+                token: 'auth/token',
                 dialogStatus: 'dialog/status',
                 currentComponent: 'dialog/component'
             }),
@@ -178,12 +179,32 @@
 
             }),
             logout() {
-                this.setAuth({})
-                this.setAlert({
-                                status: true,
-                                color: 'success',
-                                text: 'logout success'
-                            })
+                let config = {
+                    headers: {
+                        'Authorization': 'Bearer ' + this.token
+                    },
+                }
+                axios.post('api/auth/logout', {}, config)
+                .then((response) => {
+                    this.setAuth({
+                        'user': {},
+                        'token': {}
+                    })
+                    this.setAlert({
+                                    status: true,
+                                    color: 'success',
+                                    text: 'logout success'
+                                })
+                })
+                .catch((error) => {
+                    let {data} = error.response
+                    this.setAlert({
+                                    status: true,
+                                    color: 'error',
+                                    text: 'data.message'
+                                })
+                })
+                
             }
         },
         

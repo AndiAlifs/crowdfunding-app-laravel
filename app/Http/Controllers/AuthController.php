@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -30,7 +31,8 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if ($token = $this->guard()->attempt($credentials)) {
-            return $this->respondWithToken($token);
+            $user = User::where('email',$request->email)->first();
+            return $this->respondWithToken($token,$user);
         }
 
         return response()->json(['error' => 'Unauthorized'], 401);
@@ -65,7 +67,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken($this->guard()->refresh());
+        return $this->guard()->refresh();
     }
 
     /**
@@ -75,13 +77,16 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
-    {
+    protected function respondWithToken($token,$user)
+    {   
+        $data['token'] = $token;
+        $data['user'] = $user;
+
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 60
-        ]);
+            'response_code' => '00',
+            'response_message' => 'berhasil login',
+            'data' => $data
+        ], 200);
     }
 
     /**

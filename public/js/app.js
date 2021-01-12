@@ -2201,6 +2201,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     transaction: 'transaction/transaction',
     guest: 'auth/guest',
     user: 'auth/user',
+    token: 'auth/token',
     dialogStatus: 'dialog/status',
     currentComponent: 'dialog/component'
   })), {}, {
@@ -2220,11 +2221,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setAlert: 'alert/set'
   })), {}, {
     logout: function logout() {
-      this.setAuth({});
-      this.setAlert({
-        status: true,
-        color: 'success',
-        text: 'logout success'
+      var _this = this;
+
+      var config = {
+        headers: {
+          'Authorization': 'Bearer ' + this.token
+        }
+      };
+      axios.post('api/auth/logout', {}, config).then(function (response) {
+        _this.setAuth({
+          'user': {},
+          'token': {}
+        });
+
+        _this.setAlert({
+          status: true,
+          color: 'success',
+          text: 'logout success'
+        });
+      })["catch"](function (error) {
+        var data = error.response.data;
+
+        _this.setAlert({
+          status: true,
+          color: 'error',
+          text: 'data.message'
+        });
       });
     }
   })
@@ -2425,13 +2447,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'login',
   data: function data() {
     return {
-      valid: true,
-      email: 'example@example.com',
+      valid: false,
+      email: '',
       emailRules: [function (v) {
         return !!v || 'email is required';
       }],
@@ -2457,14 +2488,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           'email': this.email,
           'password': this.password
         };
-        var url = '/api/auth_2/login/';
+        var url = '/api/auth/login/';
         axios.post(url, formData).then(function (response) {
           var data = response.data.data;
           console.log(data);
 
           _this.setAuth(data);
 
-          if (data.id.length > 0) {
+          if (_this.user.id.length > 0) {
             _this.setAlert({
               status: true,
               color: 'success',
@@ -4308,7 +4339,7 @@ var render = function() {
               _vm._v(" "),
               _c("v-text-field", {
                 attrs: {
-                  "append-icon": _vm.showPassword ? "mdi-eye" : "mdi-eye-off;",
+                  "append-icon": _vm.showPassword ? "mdi-eye" : "mdi-eye-off",
                   rules: _vm.passwordRules,
                   type: _vm.showPassword ? "text" : "password",
                   label: "Password",
@@ -4348,6 +4379,27 @@ var render = function() {
                       ),
                       _c("v-icon", { attrs: { right: "", dark: "" } }, [
                         _vm._v("mdi-lock-open")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "primary lighten-1" },
+                      on: {
+                        click: function($event) {
+                          return _vm.authProvider("google")
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    Login With Google\n                    "
+                      ),
+                      _c("v-icon", { attrs: { right: "", dark: "" } }, [
+                        _vm._v("mdi-google")
                       ])
                     ],
                     1
@@ -65807,11 +65859,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
   state: {
-    user: {}
+    user: {},
+    token: {}
   },
   mutations: {
     set: function set(state, payload) {
-      state.user = payload;
+      state.token = payload.token;
+      state.user = payload.user;
     }
   },
   actions: {
@@ -65823,6 +65877,9 @@ __webpack_require__.r(__webpack_exports__);
   getters: {
     user: function user(state) {
       return state.user;
+    },
+    token: function token(state) {
+      return state.token;
     },
     guest: function guest(state) {
       return Object.keys(state.user).length === 0;

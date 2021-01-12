@@ -1,11 +1,13 @@
 export default {
     namespaced: true,
     state: {
-        user: {}
+        user: {},
+        token: {}
     },
     mutations: {
         set: (state, payload) => {
-            state.user = payload
+            state.token = payload.token
+            state.user = payload.user
         },
     },
     actions: {
@@ -15,6 +17,7 @@ export default {
     },
     getters: {
         user: state => state.user,
+        token: state => state.token,
         guest: state => Object.keys(state.user).length === 0
     }
 }

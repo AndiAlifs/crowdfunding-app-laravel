@@ -18,7 +18,7 @@
                 ></v-text-field>
                 <v-text-field
                     v-model="password"
-                    :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off;'"
+                    :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                     :rules="passwordRules"
                     :type="showPassword? 'text' : 'password'"
                     label="Password"
@@ -36,6 +36,15 @@
                         Login
                         <v-icon right dark>mdi-lock-open</v-icon>
                     </v-btn>
+
+                    <v-btn
+                        color="primary lighten-1"
+                        @click="authProvider('google')"
+                    >
+                        Login With Google
+                        <v-icon right dark>mdi-google</v-icon>
+                    </v-btn>
+
                 </div>
             </v-form>
         </v-container>
@@ -48,8 +57,8 @@ export default {
     name: 'login',
     data() {
         return {
-            valid: true,
-            email: 'example@example.com',
+            valid: false,
+            email: '',
             emailRules: [
                 v => !!v || 'email is required'
             ],
@@ -76,13 +85,13 @@ export default {
                     'email' : this.email,
                     'password' : this.password,
                 }
-                let url = '/api/auth_2/login/'
+                let url = '/api/auth/login/'
                 axios.post(url, formData)
                     .then((response) => {
                         let { data } = response.data
                         console.log(data)
                         this.setAuth(data)
-                        if(data.id.length > 0) {
+                        if(this.user.id.length > 0) {
                             this.setAlert({
                                 status: true,
                                 color: 'success',
