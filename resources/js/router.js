@@ -33,6 +33,11 @@ const router = new Router({
             component: () => import('./Blogs.vue')
         },
         {
+            path: '/auth/social/:provider/callback',
+            name: 'social',
+            component: () => import('./Social.vue')
+        },
+        {
             path: '*',
             redirect: '/'
         },

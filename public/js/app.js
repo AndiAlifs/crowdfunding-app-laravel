@@ -2515,6 +2515,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     close: function close() {
       this.$emit('closed', false);
+    },
+    authProvider: function authProvider(provider) {
+      var _this2 = this;
+
+      var url = '/api/auth/social/' + provider;
+      axios.get(url).then(function (response) {
+        var data = response.data;
+        window.location.href = data.url;
+      })["catch"](function (error) {
+        var data = error.response.data;
+
+        _this2.setAlert({
+          status: true,
+          color: 'error',
+          text: 'data.message'
+        });
+      });
     }
   })
 });
@@ -66298,7 +66315,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/blogs',
     name: 'blogs',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./Blogs.vue */ "./resources/js/Blogs.vue"));
+      return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ./Blogs.vue */ "./resources/js/Blogs.vue"));
+    }
+  }, {
+    path: '/auth/social/:provider/callback',
+    name: 'social',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./Social.vue */ "./resources/js/Social.vue"));
     }
   }, {
     path: '*',

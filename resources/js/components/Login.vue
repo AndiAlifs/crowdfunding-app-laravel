@@ -111,6 +111,22 @@ export default {
         },
         close() {
             this.$emit('closed', false)
+        },
+        authProvider(provider) {
+            let url = '/api/auth/social/' + provider
+            axios.get(url)
+            .then((response) => {
+                let data = response.data
+                window.location.href = data.url
+            })
+            .catch((error) => {
+                let {data} = error.response
+                this.setAlert({
+                                status: true,
+                                color: 'error',
+                                text: 'data.message'
+                            })
+            })    
         }
     }
 }

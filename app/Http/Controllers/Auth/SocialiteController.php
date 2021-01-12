@@ -47,7 +47,7 @@ class SocialiteController extends Controller
             'response_code' => '01',
             'response_message' => 'login success',
             'data' => $data
-        ], 401);
+        ], 201);
 
     }
 }

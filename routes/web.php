@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('app');
 });
 
+Route::get('/auth/social/{provider}/callback', function () {
+    return view('app');
+});
+
 Route::get('/{any?}', function(){
     return redirect('/');
 })->where('any','.*');
