@@ -5,7 +5,7 @@
             <v-img
                 :src="campaign.image"
                 class="white--text"
-                aspect-ratio="2.5"
+                aspect-ratio="0.8"
             >
                 <v-card-title 
                     class="fill-height align-end"

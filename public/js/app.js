@@ -2272,7 +2272,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'alert',
@@ -2285,9 +2284,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       get: function get() {
         return this.status;
       },
-      set: function set(value) {
+      set: function set() {
         this.setAlert({
-          status: values
+          status: false
         });
       }
     }
@@ -4090,12 +4089,7 @@ var render = function() {
       _c(
         "v-snackbar",
         {
-          attrs: {
-            color: "success",
-            timeout: "4000",
-            "multi-line": "",
-            outlined: ""
-          },
+          attrs: { color: "success", "multi-line": "", outlined: "" },
           scopedSlots: _vm._u([
             {
               key: "action",
@@ -4120,11 +4114,11 @@ var render = function() {
             }
           ]),
           model: {
-            value: _vm.status,
+            value: _vm.alert,
             callback: function($$v) {
-              _vm.status = $$v
+              _vm.alert = $$v
             },
-            expression: "status"
+            expression: "alert"
           }
         },
         [_vm._v("\n        " + _vm._s(_vm.text) + "\n\n        ")]
@@ -4166,7 +4160,7 @@ var render = function() {
             "v-img",
             {
               staticClass: "white--text",
-              attrs: { src: _vm.campaign.image, "aspect-ratio": "2.5" }
+              attrs: { src: _vm.campaign.image, "aspect-ratio": "0.8" }
             },
             [
               _c("v-card-title", {

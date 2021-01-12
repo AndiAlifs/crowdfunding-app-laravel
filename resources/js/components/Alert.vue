@@ -1,9 +1,8 @@
 <template>
     <div>
         <v-snackbar
-            v-model="status"
+            v-model="alert"
             color="success"
-            timeout="2000"
             multi-line
             outlined
         >
@@ -37,9 +36,9 @@
                 get() {
                     return this.status
                 },
-                set (value) {
+                set() {
                     this.setAlert({
-                        status: values
+                        status: false
                     })
                 }
             },
