@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        // Laravel\Socialite\SocialiteServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,7 +228,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'jwt' => 'Tymon\JWTAuth\Providers\JWT\Namshi',
         'auth' => 'Tymon\JWTAuth\Providers\Auth\Illuminate',
-        'storage' => 'Tymon\JWTAuth\Providers\Storage\Illuminate'
+        'storage' => 'Tymon\JWTAuth\Providers\Storage\Illuminate',
+        // 'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

@@ -11,6 +11,8 @@ Route::group([
     Route::post('register', 'RegisterController');
     Route::get('get_otp', 'OTPController');
     Route::post('update-password', 'UpdatePasswordController');
+    Route::get('/social/{provider}', 'SocialiteController@redirectToProvider');
+    Route::get('/social/{provider}/callback', 'SocialiteController@handleProviderCallback');
 });
 
 Route::group([
