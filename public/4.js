@@ -102,7 +102,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Halaman social vue\n")])
+  return _c("div", { staticClass: "m-auto" }, [
+    _vm._v("\n    Login with Google success\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

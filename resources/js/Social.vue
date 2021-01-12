@@ -1,6 +1,6 @@
 <template>
-    <div>
-        Halaman social vue
+    <div class="m-auto">
+        Login with Google success
     </div>
 </template>
 
