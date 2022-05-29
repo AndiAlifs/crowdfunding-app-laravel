@@ -16,6 +16,7 @@
         "laravel/socialite": "^5.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.1",
+        "midtrans/midtrans-php": "^2.5",
         "tymon/jwt-auth": "dev-develop"
     },
     "require-dev": {

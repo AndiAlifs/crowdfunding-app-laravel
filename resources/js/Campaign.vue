@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import Axios from "axios";
 import { mapActions, mapGetters, mapMutations } from "vuex";
 export default {
     data: () => ({
@@ -78,6 +79,17 @@ export default {
                 color : 'success',
                 text: 'Donasi '+this.campaign.title+' ditambahkan'
             })
+            console.log('masuk');
+            let uri = '/api/payment/generate'
+            axios.post(uri)
+                .then((response) => {
+                    // console.log(response.data.data.token)
+                    snap.pay(response.data.data.token)
+                })
+                .catch((error) => {
+                    let { responses } = error
+                    console.log(response)
+                })
         }
     }
 }

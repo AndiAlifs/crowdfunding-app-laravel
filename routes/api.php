@@ -50,3 +50,4 @@ Route::group([
 });
 
 Route::post('payment/store', 'App\Http\Controllers\PaymentController@store');
+Route::post('payment/generate', 'App\Http\Controllers\MidtransController@generate');
