@@ -38,7 +38,7 @@ class PaymentController extends Controller
             'payment_type' => 'permata',
             'transaction_details' => [
                 "order_id" => uniqid(),
-                "gross_amount" => 1000
+                "gross_amount" => 10000
             ]
         ];
 
