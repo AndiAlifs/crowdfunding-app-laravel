@@ -48,3 +48,5 @@ Route::group([
     Route::get('random/{count}', 'BlogController@random');
     Route::post('store', 'BlogController@store');
 });
+
+Route::post('payment/store', 'App\Http\Controllers\PaymentController@store');
